@@ -1,4 +1,3 @@
-/*
 package com.example.securitydemo.security;
 
 import com.example.securitydemo.security.filter.CustomAuthenticationFilter;
@@ -28,7 +27,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 {
 
     private  final UserDetailsService userDetailsService;
-
+    private static final String[] PUBLIC_URLS = {
+            "/v2/api-docs",
+            "/swagger-resources/**",
+            "/swagger-ui/**",
+            "/webjars/**"
+    };
 
 
     @Override
@@ -44,6 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 
         // making session stateles
         http.sessionManagement().sessionCreationPolicy(STATELESS);
+        http.authorizeRequests().antMatchers(PUBLIC_URLS).permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/**").hasAnyAuthority("ROLE_USER");
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/admins/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers("/login","/api/token/refresh/**","/h2-console/**").permitAll();
@@ -61,4 +66,3 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 
 
 }
-*/
