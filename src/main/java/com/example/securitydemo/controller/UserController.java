@@ -7,19 +7,12 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.securitydemo.dto.Role;
 import com.example.securitydemo.dto.User;
 import com.example.securitydemo.services.UserService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -75,7 +68,7 @@ public class UserController
     @PostMapping("/role/addrole")
     public  ResponseEntity<?> addToUser(@RequestBody RoleToUser roleToUser )
     {
-        userService.addRoleToUSer(roleToUser.getUsername(),roleToUser.getRole());
+        userService.addRoleToUser(roleToUser.getUsername(),roleToUser.getRole());
         return ResponseEntity.ok().build();
     }
 

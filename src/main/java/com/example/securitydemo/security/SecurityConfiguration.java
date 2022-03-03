@@ -1,3 +1,4 @@
+/*
 package com.example.securitydemo.security;
 
 import com.example.securitydemo.security.filter.CustomAuthenticationFilter;
@@ -49,11 +50,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(new CustomAuthenticationFilter(authenticationManagerBean()));
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
-
-        // in this case every request is permitted to any page
-
-        http.addFilter(new CustomAuthenticationFilter(
-                authenticationManagerBean()));
     }
 
     @Bean
@@ -65,3 +61,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 
 
 }
+*/

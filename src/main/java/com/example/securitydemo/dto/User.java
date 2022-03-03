@@ -1,5 +1,6 @@
 package com.example.securitydemo.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,5 +33,6 @@ public class User
             joinColumns = { @JoinColumn(name = "user_id") },
             inverseJoinColumns = { @JoinColumn(name = "role_id") })
     @JsonManagedReference
+    @JsonIgnore
     private Collection<Role>  roles  = new ArrayList<>();
 }
